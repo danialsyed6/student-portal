@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './ducks';
-import dashboardSlice from './ducks/dashboard/slice';
+import dashboardSlice from './ducks/student/slice';
 
 const saga = createSagaMiddleware();
 

@@ -1,10 +1,10 @@
 import { takeLatest } from 'redux-saga/effects';
-import { workGetDashboard } from './dashboard/saga';
+import { workGetStudents } from './student/saga';
 
-import { getDashboardRequest } from './dashboard/slice';
+import { getStudentsRequest } from './student/slice';
 
 function* rootSaga() {
-  yield takeLatest(getDashboardRequest.type, workGetDashboard);
+  yield takeLatest(getStudentsRequest.type, workGetStudents);
 }
 
 export default rootSaga;
