@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { call, put } from 'redux-saga/effects';
-import { getStudentsSuccess } from './slice';
-
-async function getStudents() {
-  const { data } = await axios.get('https://api.thecatapi.com/v1/breeds');
-  data.length = 10;
-  return data;
-}
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { apiCaller } from '../../utils';
+import { getStudentsSuccess } from './reducer';
+import { IStudent, StudentActionTypes } from './types';
 
 function* workGetStudents() {
-  yield call(getStudents);
-  yield put(getStudentsSuccess({ name: '' }));
+  const students: IStudent[] = yield call(apiCaller, 'GET', '/students');
+
+  yield put(getStudentsSuccess(students));
 }
 
-export { workGetStudents };
+function* studentSaga() {
+  yield takeLatest(StudentActionTypes.GET_STUDENTS, workGetStudents);
+}
+
+export { studentSaga };

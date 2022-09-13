@@ -3,7 +3,11 @@ export interface IStudent {
 }
 
 export interface IStudentState {
-  student: IStudent;
+  students: IStudent[] | [];
   loading: boolean;
   error: null | string;
 }
+
+export const StudentActionTypes = {
+  GET_STUDENTS: '@student/getStudentRequest',
+};

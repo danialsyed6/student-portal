@@ -1,0 +1,18 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Ali Raza",
+      "subject": "Maths",
+      "marks": 20,
+      "grade": "F"
+    },
+    {
+      "id": 2,
+      "name": "Ali Raza",
+      "subject": "English",
+      "marks": 80,
+      "grade": "A"
+    }
+  ]
+}

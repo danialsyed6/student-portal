@@ -2,22 +2,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IStudent, IStudentState } from './types';
 
 const initialState: IStudentState = {
-  student: { name: '' },
+  students: [],
   loading: false,
   error: null,
 };
 
 const StudentSlice = createSlice({
-  name: 'Student',
+  name: 'student',
   initialState,
 
   reducers: {
     getStudentsRequest: state => {
       state.loading = true;
     },
-    getStudentsSuccess: (state, { payload }: PayloadAction<IStudent>) => {
+    getStudentsSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
       state.loading = false;
-      state.student = payload;
+      state.students = payload;
     },
     getStudentsFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;
@@ -27,9 +27,9 @@ const StudentSlice = createSlice({
     editStudentRequest: state => {
       state.loading = true;
     },
-    editStudentSuccess: (state, { payload }: PayloadAction<IStudent>) => {
+    editStudentSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
       state.loading = false;
-      state.student = payload;
+      state.students = payload;
     },
     editStudentFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;
@@ -39,9 +39,9 @@ const StudentSlice = createSlice({
     addStudentRequest: state => {
       state.loading = true;
     },
-    addStudentSuccess: (state, { payload }: PayloadAction<IStudent>) => {
+    addStudentSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
       state.loading = false;
-      state.student = payload;
+      state.students = payload;
     },
     addStudentFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;
