@@ -1,0 +1,45 @@
+.dashboard_container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.dashboard_header {
+  height: 5em;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8ecf5;
+}
+
+.dashboard_header > h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: 0em;
+}
+
+.dashboard_cta {
+  height: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard_cta > h2 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+}
+
+.dashboard_things {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard_table {
+  grid-column: 1 / -1;
+}

@@ -1,0 +1,19 @@
+.button {
+  height: 44px;
+  width: 113px;
+  border: 1px solid #eff2f7;
+  border-radius: 8px;
+}
+
+.button-primary {
+  background-color: #4aaa9acc;
+  color: #fff;
+}
+
+.button span {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0em;
+  font-style: normal;
+  font-weight: 400;
+}
