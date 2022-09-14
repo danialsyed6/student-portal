@@ -13,7 +13,9 @@ import { IStudent } from '../../../state/ducks/student/types';
 import TableGradeFlag from '../tableGradeFlag';
 import OptionsMenu from '../optionsMenu';
 
-import './style.css';
+import './styles.ts';
+import { Box, Typography } from '@mui/material';
+import { dateStyle, timeStyle } from './styles';
 
 interface IProps {
   students: IStudent[] | [];
@@ -22,7 +24,7 @@ interface IProps {
 export default function BasicTable({ students }: IProps) {
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="simple table" className="">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="left" sx={{ fontWeight: 'bold' }}>
@@ -47,7 +49,7 @@ export default function BasicTable({ students }: IProps) {
         </TableHead>
         <TableBody>
           {students.map(student => (
-            <TableRow key={student._id} className="tr">
+            <TableRow key={student._id}>
               <TableCell align="left">{student.name}</TableCell>
               <TableCell align="center">{student.marks}</TableCell>
               <TableCell align="center">{student.subject}</TableCell>
@@ -55,14 +57,14 @@ export default function BasicTable({ students }: IProps) {
                 <TableGradeFlag title={student.grade} />
               </TableCell>
               <TableCell align="center">
-                <div className="dateTD">
-                  <span className="date">
+                <Box>
+                  <Typography sx={dateStyle}>
                     {moment(student.createdAt).format('ll')}
-                  </span>
-                  <span className="time">
+                  </Typography>
+                  <Typography sx={timeStyle}>
                     at {moment(student.createdAt).format('LT')}
-                  </span>
-                </div>
+                  </Typography>
+                </Box>
               </TableCell>
               <TableCell align="center">
                 <OptionsMenu />

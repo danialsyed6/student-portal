@@ -1,7 +1,8 @@
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import React from 'react';
+import { flagSubtitleStyle, flagTitleStyle } from './styles';
 
-import './style.css';
+import './styles.ts';
 
 interface IProps {
   danger?: boolean;
@@ -27,8 +28,8 @@ const GradeFlag = ({ danger = false, title, grade }: IProps) => {
         }),
       }}
     >
-      <p className="flag_title">{title}</p>
-      <p className="flag_subtitle">{grade}</p>
+      <Typography sx={flagTitleStyle}>{title}</Typography>
+      <Typography sx={flagSubtitleStyle}>{grade}</Typography>
     </Paper>
   );
 };

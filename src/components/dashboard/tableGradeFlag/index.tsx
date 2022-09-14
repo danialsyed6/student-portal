@@ -1,6 +1,13 @@
 import { Paper, Typography } from '@mui/material';
 import React from 'react';
-import styles from './style';
+import {
+  gradeFlag,
+  gradeFlagLight,
+  gradeFlagRed,
+  gradeFlagTitle,
+  gradeFlagTitleLight,
+  gradeFlagTitleRed,
+} from './styles';
 
 interface IProps {
   title: string;
@@ -10,16 +17,16 @@ const TableGradeFlag = ({ title }: IProps) => {
   return (
     <Paper
       sx={{
-        ...styles.miniflag,
-        ...(['B+', 'B-'].includes(title) && styles.miniflagLight),
-        ...(title === 'F' && styles.miniflagRed),
+        ...gradeFlag,
+        ...(['B+', 'B-'].includes(title) && gradeFlagLight),
+        ...(title === 'F' && gradeFlagRed),
       }}
     >
       <Typography
         sx={{
-          ...styles.miniflagTitle,
-          ...(['B+', 'B-'].includes(title) && styles.miniflagTitleLight),
-          ...(title === 'F' && styles.miniflagTitleRed),
+          ...gradeFlagTitle,
+          ...(['B+', 'B-'].includes(title) && gradeFlagTitleLight),
+          ...(title === 'F' && gradeFlagTitleRed),
         }}
       >
         {title}

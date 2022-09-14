@@ -1,7 +1,6 @@
 import { Button as MuiButton, Typography } from '@mui/material';
 import React, { MouseEventHandler } from 'react';
-
-import './style.css';
+import { buttonPrimaryStyle, buttonStyle, buttonTextStyle } from './styles';
 
 interface IProps {
   secondary?: boolean;
@@ -12,21 +11,17 @@ interface IProps {
 const Button = ({ secondary = false, text, onClick }: IProps) => {
   return (
     <MuiButton
-      className={`button pointer`}
+      className="pointer"
       onClick={onClick}
       variant="outlined"
       sx={{
-        color: '#000',
-        border: '1px solid #eff2f7',
-        ...(!secondary && {
-          backgroundColor: '#4aaa9acc',
-          '&:hover': {
-            backgroundColor: '#4aaa9acc',
-          },
-        }),
+        ...buttonStyle,
+        ...(!secondary && buttonPrimaryStyle),
       }}
     >
-      <Typography component="span">{text}</Typography>
+      <Typography component="span" sx={buttonTextStyle}>
+        {text}
+      </Typography>
     </MuiButton>
   );
 };
