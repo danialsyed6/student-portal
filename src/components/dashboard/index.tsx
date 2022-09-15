@@ -12,8 +12,11 @@ import GradeFlag from './gradeFlag';
 import Table from './table';
 import Button from './button';
 import { students } from '../../state/utils/data';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Grid container direction="column" rowGap={3}>
@@ -24,7 +27,11 @@ const Dashboard = () => {
         </Grid>
         <Grid item sx={studentSummaryStyle}>
           <Typography sx={studentSummaryTextStyle}>Students Sammary</Typography>
-          <Button text="+ Add Data" onClick={() => {}} secondary />
+          <Button
+            text="+ Add Data"
+            onClick={() => navigate('/addStudent')}
+            secondary
+          />
         </Grid>
         <Grid item sx={gradesStyle}>
           <GradeFlag title="Top Grade" grade="A+" />

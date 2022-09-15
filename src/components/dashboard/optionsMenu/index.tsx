@@ -3,16 +3,29 @@ import { IconButton, Menu, MenuItem } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { useNavigate } from 'react-router-dom';
 
 const ITEM_HEIGHT = 48;
 
-export default function OptionsMenu() {
+interface IProps {
+  id: string;
+}
+
+export default function OptionsMenu({ id }: IProps) {
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleEdit = () => {
+    navigate(`/editStudent/${id}`);
     setAnchorEl(null);
   };
 
@@ -44,7 +57,7 @@ export default function OptionsMenu() {
           },
         }}
       >
-        <MenuItem onClick={handleClose} className="pointer">
+        <MenuItem onClick={handleEdit} className="pointer">
           <CreateIcon sx={{ padding: '10px', paddingLeft: 0 }} />
           Edit
         </MenuItem>

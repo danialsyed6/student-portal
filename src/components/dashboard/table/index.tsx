@@ -32,6 +32,7 @@ export default function BasicTable({ students }: IProps) {
               <TableCell
                 align={i === 0 ? 'left' : 'center'}
                 sx={{ fontWeight: 'bold' }}
+                key={i}
               >
                 {key}
               </TableCell>
@@ -58,7 +59,7 @@ export default function BasicTable({ students }: IProps) {
                 </Box>
               </TableCell>
               <TableCell align="center">
-                <OptionsMenu />
+                <OptionsMenu id={student._id} />
               </TableCell>
             </TableRow>
           ))}
