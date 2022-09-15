@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -10,11 +10,12 @@ import ErrorIcon from '@mui/icons-material/Error';
 import { Control, FieldValues, useController } from 'react-hook-form';
 
 import { formControlStyles } from './styles';
+import { IStudentForm } from '../../state/ducks/student/types';
 
 interface IProps {
   name: string;
   label: string;
-  control: Control<FieldValues, any>;
+  control: Control<FieldValues, IStudentForm>;
   type?: string;
 }
 
@@ -24,14 +25,10 @@ const InputText = ({ name, label, control, type = 'text' }: IProps) => {
     fieldState: { error: errorObj },
   } = useController({ name, control });
 
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setError(errorObj ? true : false);
-  }, [errorObj, name, value]);
+  const isError = !!errorObj;
 
   return (
-    <FormControl variant="outlined" sx={formControlStyles} error={error}>
+    <FormControl variant="outlined" sx={formControlStyles} error={isError}>
       <InputLabel htmlFor={name}>{label}</InputLabel>
       <OutlinedInput
         id={name}
@@ -39,14 +36,14 @@ const InputText = ({ name, label, control, type = 'text' }: IProps) => {
         onChange={onChange}
         endAdornment={
           <InputAdornment position="end">
-            {error && <ErrorIcon sx={error ? { color: 'red' } : {}} />}
+            {isError && <ErrorIcon sx={isError ? { color: 'red' } : {}} />}
           </InputAdornment>
         }
         label={label}
         type={type}
       />
-      <FormHelperText error={error} id={`${name}-error`}>
-        {error ? errorObj?.message : ' '}
+      <FormHelperText error={isError} id={`${name}-error`}>
+        {isError ? errorObj?.message : ' '}
       </FormHelperText>
     </FormControl>
   );

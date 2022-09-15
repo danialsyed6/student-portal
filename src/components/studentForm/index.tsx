@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
 import { Container, Grid, Typography } from '@mui/material';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-import { containerStyles, titleStyles } from './styles';
 import { Button, InputSelect, InputText } from '../common';
+import { containerStyles, titleStyles } from './styles';
 import {
   gradeOptions,
   studentSchema,
   subjectOptions,
 } from '../../state/utils/data';
+import { IStudentForm } from '../../state/ducks/student/types';
+import { FORM_TYPE } from '../../state/utils/enums';
 
 const StudentForm = () => {
   const navigate = useNavigate();
-  const formFor = useLocation().pathname.includes('add') ? 'Add' : 'Edit';
-
+  const { id } = useParams();
   const [error, setError] = useState(false);
 
-  const { handleSubmit, control } = useForm({
+  const formType = id ? FORM_TYPE.EDIT : FORM_TYPE.ADD;
+
+  const { handleSubmit, control } = useForm<FieldValues, IStudentForm>({
     resolver: yupResolver(studentSchema),
     mode: 'onChange',
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FieldValues) => {
     console.log(data);
   };
 
@@ -35,7 +37,7 @@ const StudentForm = () => {
           onClick={() => setError(!error)}
           sx={titleStyles}
         >
-          {formFor} Student Data
+          {formType} Student Data
         </Typography>
         <InputText name="name" label="Name" control={control} />
         <InputText name="marks" label="Marks" control={control} type="number" />
@@ -54,7 +56,7 @@ const StudentForm = () => {
         />
         <Grid item container sx={{ justifyContent: 'space-between' }}>
           <Button text="Cancel" onClick={() => navigate('/')} secondary />
-          <Button text={formFor} onClick={handleSubmit(onSubmit)} />
+          <Button text={formType} onClick={handleSubmit(onSubmit)} />
         </Grid>
       </Grid>
     </Container>

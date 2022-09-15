@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   FormControl,
   FormHelperText,
@@ -9,12 +9,13 @@ import {
 import { Control, FieldValues, useController } from 'react-hook-form';
 
 import { formControlStyles, menuItemStyles } from './styles';
+import { IStudentForm } from '../../state/ducks/student/types';
 
 interface IProps {
   name: string;
   label: string;
   options: { name: string; label: string }[];
-  control: Control<FieldValues, any>;
+  control: Control<FieldValues, IStudentForm>;
 }
 
 const InputSelect = ({ name, label, options, control }: IProps) => {
@@ -22,14 +23,11 @@ const InputSelect = ({ name, label, options, control }: IProps) => {
     field: { onChange, value },
     fieldState: { error: errorObj },
   } = useController({ name, control });
-  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    setError(errorObj ? true : false);
-  }, [errorObj, name, value]);
+  const isError = !!errorObj;
 
   return (
-    <FormControl sx={formControlStyles} error={error}>
+    <FormControl sx={formControlStyles} error={isError}>
       <InputLabel id={`${name}-label`} htmlFor={name}>
         {label}
       </InputLabel>
@@ -48,8 +46,8 @@ const InputSelect = ({ name, label, options, control }: IProps) => {
           </MenuItem>
         ))}
       </Select>
-      <FormHelperText error={error} id={`${name}-error`}>
-        {error ? errorObj?.message : ' '}
+      <FormHelperText error={isError} id={`${name}-error`}>
+        {isError ? errorObj?.message : ' '}
       </FormHelperText>
     </FormControl>
   );

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { IconButton, Menu, MenuItem } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-const ITEM_HEIGHT = 48;
+import { MENU_ITEM_HEIGHT } from '../../../state/utils/consts';
 
 interface IProps {
   id: string;
@@ -52,7 +52,7 @@ export default function OptionsMenu({ id }: IProps) {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
+            maxHeight: MENU_ITEM_HEIGHT * 4.5,
             width: '20ch',
           },
         }}

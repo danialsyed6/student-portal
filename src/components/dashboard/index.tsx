@@ -1,6 +1,10 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
+import GradeFlag from './gradeFlag';
+import Table from './table';
+import Button from '../common/button';
 import {
   studentSummaryStyle,
   studentSummaryTextStyle,
@@ -8,11 +12,7 @@ import {
   headerStyle,
   headerTextStyle,
 } from './styles';
-import GradeFlag from './gradeFlag';
-import Table from './table';
-import Button from '../common/button';
 import { students } from '../../state/utils/data';
-import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const navigate = useNavigate();

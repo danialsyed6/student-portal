@@ -1,3 +1,10 @@
+export interface IStudentForm {
+  name: string;
+  subject: string;
+  grade: string;
+  marks: number;
+}
+
 export interface IStudent {
   _id: string;
   name: string;

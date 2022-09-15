@@ -12,9 +12,9 @@ import {
 } from '@mui/material';
 import moment from 'moment';
 
-import { dateStyle, timeStyle } from './styles';
 import TableGradeFlag from '../tableGradeFlag';
 import OptionsMenu from '../optionsMenu';
+import { dateStyle, timeStyle } from './styles';
 import { IStudent } from '../../../state/ducks/student/types';
 import { studentTableKeys } from '../../../state/utils/data';
 
