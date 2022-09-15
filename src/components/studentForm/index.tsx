@@ -14,7 +14,6 @@ import {
 
 const StudentForm = () => {
   const navigate = useNavigate();
-  // const { id } = useParams();
   const formFor = useLocation().pathname.includes('add') ? 'Add' : 'Edit';
 
   const [error, setError] = useState(false);

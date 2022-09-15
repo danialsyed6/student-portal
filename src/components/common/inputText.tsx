@@ -20,7 +20,7 @@ interface IProps {
 
 const InputText = ({ name, label, control, type = 'text' }: IProps) => {
   const {
-    field: { onChange, value /*  ref  */ },
+    field: { onChange, value },
     fieldState: { error: errorObj },
   } = useController({ name, control });
 
