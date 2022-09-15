@@ -1,21 +1,21 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
+import {
+  Box,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from '@mui/material';
 import moment from 'moment';
 
-import { IStudent } from '../../../state/ducks/student/types';
+import { dateStyle, timeStyle } from './styles';
 import TableGradeFlag from '../tableGradeFlag';
 import OptionsMenu from '../optionsMenu';
-
-import './styles.ts';
-import { Box, Typography } from '@mui/material';
-import { dateStyle, timeStyle } from './styles';
+import { IStudent } from '../../../state/ducks/student/types';
 
 interface IProps {
   students: IStudent[] | [];

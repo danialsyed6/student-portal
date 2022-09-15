@@ -1,9 +1,6 @@
 import React from 'react';
-import GradeFlag from './gradeFlag';
-import Table from './table';
-
 import { Container, Grid, Typography } from '@mui/material';
-import Button from './button';
+
 import {
   ctaStyle,
   ctaTextStyle,
@@ -11,6 +8,9 @@ import {
   headerStyle,
   headerTextStyle,
 } from './styles';
+import GradeFlag from './gradeFlag';
+import Table from './table';
+import Button from './button';
 import { students } from '../../state/utils/data';
 
 const Dashboard = () => {

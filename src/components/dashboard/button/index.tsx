@@ -1,5 +1,6 @@
-import { Button as MuiButton, Typography } from '@mui/material';
 import React, { MouseEventHandler } from 'react';
+import { Button as MuiButton, Typography } from '@mui/material';
+
 import { buttonPrimaryStyle, buttonStyle, buttonTextStyle } from './styles';
 
 interface IProps {

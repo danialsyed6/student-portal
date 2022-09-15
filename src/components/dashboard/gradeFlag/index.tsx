@@ -1,5 +1,6 @@
-import { Paper, Typography } from '@mui/material';
 import React from 'react';
+import { Paper, Typography } from '@mui/material';
+
 import { flagSubtitleStyle, flagTitleStyle } from './styles';
 
 import './styles.ts';
