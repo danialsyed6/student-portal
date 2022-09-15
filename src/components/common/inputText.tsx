@@ -39,7 +39,7 @@ const InputText = ({ name, label, control, type = 'text' }: IProps) => {
         onChange={onChange}
         endAdornment={
           <InputAdornment position="end">
-            <ErrorIcon sx={error ? { color: 'red' } : {}} />
+            {error && <ErrorIcon sx={error ? { color: 'red' } : {}} />}
           </InputAdornment>
         }
         label={label}

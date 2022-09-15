@@ -54,6 +54,7 @@ export const studentSchema = yup.object().shape({
   name: yup.string().required('Name is required.'),
   marks: yup
     .number()
+    .typeError('Marks are required.')
     .min(1, 'Marks should be between 1-100.')
     .max(100, 'Marks should be between 1-100.')
     .required('Marks are required.'),

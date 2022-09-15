@@ -4,10 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Button from './button';
-import InputText from './inputText';
-import InputSelect from './inputSelect';
 import { containerStyles, titleStyles } from './styles';
+import { Button, InputSelect, InputText } from '../common';
 import {
   gradeOptions,
   studentSchema,

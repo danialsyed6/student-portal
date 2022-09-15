@@ -10,7 +10,7 @@ import {
 } from './styles';
 import GradeFlag from './gradeFlag';
 import Table from './table';
-import Button from './button';
+import Button from '../common/button';
 import { students } from '../../state/utils/data';
 import { useNavigate } from 'react-router-dom';
 
