@@ -2,8 +2,8 @@ import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 
 import {
-  ctaStyle,
-  ctaTextStyle,
+  studentSummaryStyle,
+  studentSummaryTextStyle,
   gradesStyle,
   headerStyle,
   headerTextStyle,
@@ -22,8 +22,8 @@ const Dashboard = () => {
             Student Portal
           </Typography>
         </Grid>
-        <Grid item sx={ctaStyle}>
-          <Typography sx={ctaTextStyle}>Students Sammary</Typography>
+        <Grid item sx={studentSummaryStyle}>
+          <Typography sx={studentSummaryTextStyle}>Students Sammary</Typography>
           <Button text="+ Add Data" onClick={() => {}} secondary />
         </Grid>
         <Grid item sx={gradesStyle}>

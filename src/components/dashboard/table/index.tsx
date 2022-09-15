@@ -16,6 +16,7 @@ import { dateStyle, timeStyle } from './styles';
 import TableGradeFlag from '../tableGradeFlag';
 import OptionsMenu from '../optionsMenu';
 import { IStudent } from '../../../state/ducks/student/types';
+import { studentTableKeys } from '../../../state/utils/data';
 
 interface IProps {
   students: IStudent[] | [];
@@ -27,24 +28,14 @@ export default function BasicTable({ students }: IProps) {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="left" sx={{ fontWeight: 'bold' }}>
-              Name
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Marks
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Subject
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Grades
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Date
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Action
-            </TableCell>
+            {studentTableKeys.map((key, i) => (
+              <TableCell
+                align={i === 0 ? 'left' : 'center'}
+                sx={{ fontWeight: 'bold' }}
+              >
+                {key}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>

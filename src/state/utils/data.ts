@@ -24,3 +24,12 @@ export const students = [
     createdAt: '2022-09-13T05:24:31.660Z',
   },
 ];
+
+export const studentTableKeys = [
+  'Name',
+  'Marks',
+  'Subject',
+  'Grades',
+  'Date',
+  'Action',
+];
