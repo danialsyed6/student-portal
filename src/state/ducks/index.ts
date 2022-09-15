@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { all, fork } from 'redux-saga/effects';
-import { studentSaga } from './student/saga';
+
 import studentReducer from './student/reducer';
+import { studentSaga } from './student/saga';
 import { IStudentState } from './student/types';
 
 export interface IApplicationState {

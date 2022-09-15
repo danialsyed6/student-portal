@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { IStudent, IStudentState } from './types';
 
 const initialState: IStudentState = {

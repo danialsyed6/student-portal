@@ -1,5 +1,10 @@
 export interface IStudent {
+  _id: string;
   name: string;
+  subject: string;
+  grade: string;
+  marks: number;
+  createdAt: string;
 }
 
 export interface IStudentState {
