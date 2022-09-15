@@ -11,7 +11,7 @@ import {
   headerStyle,
   headerTextStyle,
 } from './styles';
-import { students } from './data';
+import { students } from '../../state/utils/data';
 
 const Dashboard = () => {
   return (
