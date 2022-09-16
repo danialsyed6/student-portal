@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { ActionType } from 'typesafe-actions';
 
 import GradeFlag from './gradeFlag';
 import Table from './table';
@@ -12,12 +13,12 @@ import {
   headerStyle,
   headerTextStyle,
 } from './styles';
-import {
-  IDispatchToProps,
-  IStudentState,
-} from '../../state/ducks/student/types';
+import { IStudentState } from '../../state/ducks/student/types';
+import { getStudents } from '../../state/ducks/student/actions';
 
-type IProps = IStudentState & IDispatchToProps;
+interface IProps extends IStudentState {
+  getStudents: () => ActionType<typeof getStudents>;
+}
 
 const Dashboard = ({ getStudents, students, loading, error }: IProps) => {
   const navigate = useNavigate();

@@ -48,6 +48,18 @@ const StudentSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+
+    deleteStudentRequest: state => {
+      state.loading = true;
+    },
+    deleteStudentSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.students = state.students.filter(student => student.id !== payload);
+    },
+    deleteStudentFail: (state, { payload }: PayloadAction<string>) => {
+      state.loading = false;
+      state.error = payload;
+    },
   },
 });
 
@@ -61,6 +73,9 @@ export const {
   addStudentRequest,
   addStudentSuccess,
   addStudentFail,
+  deleteStudentRequest,
+  deleteStudentSuccess,
+  deleteStudentFail,
 } = StudentSlice.actions;
 
 export default StudentSlice.reducer;

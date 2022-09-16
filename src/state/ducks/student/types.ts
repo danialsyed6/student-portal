@@ -1,7 +1,3 @@
-import { ActionType } from 'typesafe-actions';
-
-import { getStudents } from './actions';
-
 export interface IStudentForm {
   name: string;
   subject: string;
@@ -10,7 +6,7 @@ export interface IStudentForm {
 }
 
 export interface IStudent extends IStudentForm {
-  _id: string;
+  id: string;
   createdAt: string;
 }
 
@@ -21,9 +17,8 @@ export interface IStudentState {
 }
 
 export const StudentActionTypes = {
-  GET_STUDENTS: '@student/getStudentRequest',
+  GET_STUDENTS: '@student/getStudentsRequest',
+  ADD_STUDENT: '@student/addStudentRequest',
+  EDIT_STUDENT: '@student/editStudentRequest',
+  DELETE_STUDENT: '@student/deleteStudentRequest',
 };
-
-export interface IDispatchToProps {
-  getStudents: () => ActionType<typeof getStudents>;
-}

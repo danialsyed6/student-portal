@@ -3,15 +3,18 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CreateIcon from '@mui/icons-material/Create';
 import { IconButton, Menu, MenuItem } from '@mui/material';
+import { ActionType } from 'typesafe-actions';
 import { useNavigate } from 'react-router-dom';
 
 import { MENU_ITEM_HEIGHT } from '../../../state/utils/consts';
+import { deleteStudent } from '../../../state/ducks/student/actions';
 
 interface IProps {
   id: string;
+  deleteStudent: (id: string) => ActionType<typeof deleteStudent>;
 }
 
-export default function OptionsMenu({ id }: IProps) {
+export default function OptionsMenu({ id, deleteStudent }: IProps) {
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -26,6 +29,11 @@ export default function OptionsMenu({ id }: IProps) {
 
   const handleEdit = () => {
     navigate(`/student/${id}`);
+    setAnchorEl(null);
+  };
+
+  const handleDelete = () => {
+    deleteStudent(id);
     setAnchorEl(null);
   };
 
@@ -62,7 +70,7 @@ export default function OptionsMenu({ id }: IProps) {
           Edit
         </MenuItem>
         <MenuItem
-          onClick={handleClose}
+          onClick={handleDelete}
           sx={{ color: 'red' }}
           className="pointer"
         >
