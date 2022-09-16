@@ -17,17 +17,33 @@ import {
 } from './styles';
 import { IStudentState } from '../../state/ducks/student/types';
 import { getStudents } from '../../state/ducks/student/actions';
+import { alert } from '../../state/utils';
+import { clearError } from '../../state/ducks/student/reducer';
 
 interface IProps extends IStudentState {
   getStudents: () => ActionType<typeof getStudents>;
+  clearError: () => ActionType<typeof clearError>;
 }
 
-const Dashboard = ({ getStudents, students, loading, error }: IProps) => {
+const Dashboard = ({
+  getStudents,
+  clearError,
+  students,
+  loading,
+  error,
+}: IProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     getStudents();
   }, [getStudents]);
+
+  useEffect(() => {
+    if (!error) return;
+
+    alert(error);
+    clearError();
+  }, [error, clearError]);
 
   return (
     <Container>

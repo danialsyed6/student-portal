@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Dashboard } from '../../components';
 import { useAppSelector } from '../../state/ducks';
 import { getStudents } from '../../state/ducks/student/actions';
+import { clearError } from '../../state/ducks/student/reducer';
 import { IStudentState } from '../../state/ducks/student/types';
 
 const DashboardContainer = () => {
@@ -13,6 +14,7 @@ const DashboardContainer = () => {
 
   const dispatchToProps = {
     getStudents: useCallback(() => dispatch(getStudents()), [dispatch]),
+    clearError: useCallback(() => dispatch(clearError()), [dispatch]),
   };
 
   return <Dashboard {...stateToProps} {...dispatchToProps} />;

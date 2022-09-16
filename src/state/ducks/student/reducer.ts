@@ -63,6 +63,10 @@ const StudentSlice = createSlice({
       state.loading = false;
       state.error = payload;
     },
+
+    clearError: state => {
+      state.error = null;
+    },
   },
 });
 
@@ -79,6 +83,7 @@ export const {
   deleteStudentRequest,
   deleteStudentSuccess,
   deleteStudentFail,
+  clearError,
 } = StudentSlice.actions;
 
 export default StudentSlice.reducer;
