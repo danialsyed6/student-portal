@@ -7,6 +7,14 @@
       "name": "Syed M Danial Raza Naqvi",
       "createdAt": "2022-09-16T11:55:02.047Z",
       "id": 1
+    },
+    {
+      "subject": "Maths",
+      "grade": "F",
+      "marks": 12,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-16T13:19:48.181Z",
+      "id": 2
     }
   ]
 }

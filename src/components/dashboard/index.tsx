@@ -15,18 +15,24 @@ import {
   noStudentsStyle,
   noStudentsTextStyle,
 } from './styles';
-import { IStudentState } from '../../state/ducks/student/types';
+import { IStudent, IStudentState } from '../../state/ducks/student/types';
 import { getStudents } from '../../state/ducks/student/actions';
 import { alert } from '../../state/utils';
 import { clearError } from '../../state/ducks/student/reducer';
+import { getDashboard } from '../../state/ducks/dashboard/actions';
+import { IDashboard } from '../../state/ducks/dashboard/types';
 
 interface IProps extends IStudentState {
   getStudents: () => ActionType<typeof getStudents>;
+  getDashboard: (data: IStudent[]) => ActionType<typeof getDashboard>;
   clearError: () => ActionType<typeof clearError>;
+  dashboard: IDashboard;
 }
 
 const Dashboard = ({
   getStudents,
+  getDashboard,
+  dashboard,
   clearError,
   students,
   loading,
@@ -37,6 +43,10 @@ const Dashboard = ({
   useEffect(() => {
     getStudents();
   }, [getStudents]);
+
+  useEffect(() => {
+    getDashboard(students);
+  }, [students, getDashboard]);
 
   useEffect(() => {
     if (!error) return;
@@ -62,10 +72,14 @@ const Dashboard = ({
           />
         </Grid>
         <Grid item sx={gradesStyle}>
-          <GradeFlag title="Top Grade" grade="A+" />
-          <GradeFlag title="Top Grade" grade="A+" />
-          <GradeFlag title="Top Grade" grade="A+" danger />
-          <GradeFlag title="Top Grade" grade="A+" danger />
+          <GradeFlag title="Top Grade" grade={dashboard.topGrade} />
+          <GradeFlag title="Most Passed" grade={dashboard.mostPassed} />
+          <GradeFlag
+            title="Lowest Grade"
+            grade={dashboard.lowestGrade}
+            danger
+          />
+          <GradeFlag title="Most Failed" grade={dashboard.mostFailed} danger />
         </Grid>
         {loading ? (
           <Loader />
