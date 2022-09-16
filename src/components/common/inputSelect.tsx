@@ -6,16 +6,16 @@ import {
   MenuItem,
   Select,
 } from '@mui/material';
-import { Control, FieldValues, useController } from 'react-hook-form';
+import { Control, useController } from 'react-hook-form';
 
 import { formControlStyles, menuItemStyles } from './styles';
 import { IStudentForm } from '../../state/ducks/student/types';
 
 interface IProps {
-  name: string;
+  name: 'grade' | 'subject';
   label: string;
   options: { name: string; label: string }[];
-  control: Control<FieldValues, IStudentForm>;
+  control: Control<IStudentForm>;
 }
 
 const InputSelect = ({ name, label, options, control }: IProps) => {

@@ -7,15 +7,15 @@ import {
   OutlinedInput,
 } from '@mui/material';
 import ErrorIcon from '@mui/icons-material/Error';
-import { Control, FieldValues, useController } from 'react-hook-form';
+import { Control, useController } from 'react-hook-form';
 
 import { formControlStyles } from './styles';
 import { IStudentForm } from '../../state/ducks/student/types';
 
 interface IProps {
-  name: string;
+  name: 'name' | 'marks';
   label: string;
-  control: Control<FieldValues, IStudentForm>;
+  control: Control<IStudentForm>;
   type?: string;
 }
 

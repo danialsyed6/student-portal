@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Container, Grid, Typography } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, InputSelect, InputText } from '../common';
@@ -20,12 +20,12 @@ const StudentForm = () => {
 
   const formType = id ? FORM_TYPE.EDIT : FORM_TYPE.ADD;
 
-  const { handleSubmit, control } = useForm<FieldValues, IStudentForm>({
+  const { handleSubmit, control } = useForm<IStudentForm>({
     resolver: yupResolver(studentSchema),
     mode: 'onChange',
   });
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = (data: IStudentForm) => {
     console.log(data);
   };
 

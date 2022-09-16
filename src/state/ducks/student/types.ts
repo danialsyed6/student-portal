@@ -5,12 +5,8 @@ export interface IStudentForm {
   marks: number;
 }
 
-export interface IStudent {
+export interface IStudent extends IStudentForm {
   _id: string;
-  name: string;
-  subject: string;
-  grade: string;
-  marks: number;
   createdAt: string;
 }
 
