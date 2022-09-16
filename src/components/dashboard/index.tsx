@@ -29,7 +29,7 @@ const Dashboard = () => {
           <Typography sx={studentSummaryTextStyle}>Students Sammary</Typography>
           <Button
             text="+ Add Data"
-            onClick={() => navigate('/addStudent')}
+            onClick={() => navigate('/student')}
             secondary
           />
         </Grid>

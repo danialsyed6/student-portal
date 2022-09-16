@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DashboardContainer />} />
-        <Route path="/addStudent" element={<StudentFormContainer />} />
-        <Route path="/editStudent/:id" element={<StudentFormContainer />} />
+        <Route path="/student" element={<StudentFormContainer />} />
+        <Route path="/student/:id" element={<StudentFormContainer />} />
       </Routes>
     </BrowserRouter>
   );

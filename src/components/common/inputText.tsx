@@ -11,9 +11,10 @@ import { Control, useController } from 'react-hook-form';
 
 import { formControlStyles } from './styles';
 import { IStudentForm } from '../../state/ducks/student/types';
+import { FORM_KEYS } from '../../state/utils/enums';
 
 interface IProps {
-  name: 'name' | 'marks';
+  name: FORM_KEYS.NAME | FORM_KEYS.MARKS;
   label: string;
   control: Control<IStudentForm>;
   type?: string;

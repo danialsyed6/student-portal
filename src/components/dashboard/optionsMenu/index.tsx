@@ -25,7 +25,7 @@ export default function OptionsMenu({ id }: IProps) {
   };
 
   const handleEdit = () => {
-    navigate(`/editStudent/${id}`);
+    navigate(`/student/${id}`);
     setAnchorEl(null);
   };
 

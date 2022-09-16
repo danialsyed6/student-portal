@@ -11,7 +11,7 @@ import {
   studentSchema,
   subjectOptions,
 } from '../../state/utils/data';
-import { FORM_TYPE } from '../../state/utils/enums';
+import { FORM_KEYS, FORM_TYPE } from '../../state/utils/enums';
 import { IStudentForm } from '../../state/ducks/student/types';
 
 const StudentForm = () => {
@@ -35,17 +35,22 @@ const StudentForm = () => {
         <Typography component="h1" sx={titleStyles}>
           {formType} Student Data
         </Typography>
-        <InputText name="name" label="Name" control={control} />
-        <InputText name="marks" label="Marks" control={control} type="number" />
+        <InputText name={FORM_KEYS.NAME} label="Name" control={control} />
+        <InputText
+          name={FORM_KEYS.MARKS}
+          label="Marks"
+          control={control}
+          type="number"
+        />
 
         <InputSelect
-          name="subject"
+          name={FORM_KEYS.SUBJECT}
           label="Subjects"
           options={subjectOptions}
           control={control}
         />
         <InputSelect
-          name="grade"
+          name={FORM_KEYS.GRADE}
           label="Grades"
           options={gradeOptions}
           control={control}

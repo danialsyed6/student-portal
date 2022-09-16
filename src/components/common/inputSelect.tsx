@@ -10,9 +10,10 @@ import { Control, useController } from 'react-hook-form';
 
 import { formControlStyles, menuItemStyles } from './styles';
 import { IStudentForm } from '../../state/ducks/student/types';
+import { FORM_KEYS } from '../../state/utils/enums';
 
 interface IProps {
-  name: 'grade' | 'subject';
+  name: FORM_KEYS.GRADE | FORM_KEYS.SUBJECT;
   label: string;
   options: { name: string; label: string }[];
   control: Control<IStudentForm>;
