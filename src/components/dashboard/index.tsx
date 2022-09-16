@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import GradeFlag from './gradeFlag';
 import Table from './table';
-import Button from '../common/button';
+import { Loader, Button } from '../common';
 import {
   studentSummaryStyle,
   studentSummaryTextStyle,
@@ -12,10 +12,19 @@ import {
   headerStyle,
   headerTextStyle,
 } from './styles';
-import { students } from '../../state/utils/data';
+import {
+  IDispatchToProps,
+  IStudentState,
+} from '../../state/ducks/student/types';
 
-const Dashboard = () => {
+type IProps = IStudentState & IDispatchToProps;
+
+const Dashboard = ({ getStudents, students, loading, error }: IProps) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getStudents();
+  }, [getStudents]);
 
   return (
     <Container>
@@ -39,7 +48,7 @@ const Dashboard = () => {
           <GradeFlag title="Top Grade" grade="A+" danger />
           <GradeFlag title="Top Grade" grade="A+" danger />
         </Grid>
-        <Table students={students} />
+        {loading ? <Loader /> : <Table students={students} />}
       </Grid>
     </Container>
   );

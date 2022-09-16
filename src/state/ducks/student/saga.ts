@@ -1,10 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import { getStudentsSuccess } from './reducer';
+import { getStudentsRequest, getStudentsSuccess } from './reducer';
 import { IStudent, StudentActionTypes } from './types';
 import { apiCaller } from '../../utils';
 
 function* workGetStudents() {
+  yield put(getStudentsRequest());
+
   const students: IStudent[] = yield call(apiCaller, 'GET', '/students');
 
   yield put(getStudentsSuccess(students));

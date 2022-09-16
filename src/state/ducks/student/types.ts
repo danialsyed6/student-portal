@@ -1,3 +1,7 @@
+import { ActionType } from 'typesafe-actions';
+
+import { getStudents } from './actions';
+
 export interface IStudentForm {
   name: string;
   subject: string;
@@ -19,3 +23,7 @@ export interface IStudentState {
 export const StudentActionTypes = {
   GET_STUDENTS: '@student/getStudentRequest',
 };
+
+export interface IDispatchToProps {
+  getStudents: () => ActionType<typeof getStudents>;
+}
