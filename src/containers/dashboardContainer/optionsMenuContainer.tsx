@@ -5,7 +5,7 @@ import { OptionsMenu } from '../../components';
 import { deleteStudent } from '../../state/ducks/student/actions';
 
 interface IProps {
-  id: string;
+  id: number;
 }
 
 const OptionsMenuContainer = ({ id }: IProps) => {
@@ -13,7 +13,7 @@ const OptionsMenuContainer = ({ id }: IProps) => {
 
   const dispatchToProps = {
     deleteStudent: useCallback(
-      (id: string) => dispatch(deleteStudent(id)),
+      (id: number) => dispatch(deleteStudent(id)),
       [dispatch]
     ),
   };

@@ -10,8 +10,8 @@ import { MENU_ITEM_HEIGHT } from '../../../state/utils/consts';
 import { deleteStudent } from '../../../state/ducks/student/actions';
 
 interface IProps {
-  id: string;
-  deleteStudent: (id: string) => ActionType<typeof deleteStudent>;
+  id: number;
+  deleteStudent: (id: number) => ActionType<typeof deleteStudent>;
 }
 
 export default function OptionsMenu({ id, deleteStudent }: IProps) {

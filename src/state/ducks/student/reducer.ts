@@ -28,9 +28,12 @@ const StudentSlice = createSlice({
     editStudentRequest: state => {
       state.loading = true;
     },
-    editStudentSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
+    editStudentSuccess: (state, { payload }: PayloadAction<IStudent>) => {
       state.loading = false;
-      state.students = payload;
+      state.students = [
+        payload,
+        ...state.students.filter(student => student.id !== payload.id),
+      ];
     },
     editStudentFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;
@@ -40,9 +43,9 @@ const StudentSlice = createSlice({
     addStudentRequest: state => {
       state.loading = true;
     },
-    addStudentSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
+    addStudentSuccess: (state, { payload }: PayloadAction<IStudent>) => {
       state.loading = false;
-      state.students = payload;
+      state.students = [payload, ...state.students];
     },
     addStudentFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;

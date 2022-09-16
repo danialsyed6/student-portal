@@ -6,7 +6,7 @@ export interface IStudentForm {
 }
 
 export interface IStudent extends IStudentForm {
-  id: string;
+  id: number;
   createdAt: string;
 }
 
@@ -14,6 +14,11 @@ export interface IStudentState {
   students: IStudent[] | [];
   loading: boolean;
   error: null | string;
+}
+
+export interface IEditData {
+  id: number;
+  data: IStudentForm;
 }
 
 export const StudentActionTypes = {

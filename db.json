@@ -1,18 +1,12 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Ali Raza",
-      "subject": "Maths",
-      "marks": 20,
-      "grade": "F"
-    },
-    {
-      "id": 2,
-      "name": "Ali Raza",
       "subject": "English",
-      "marks": 80,
-      "grade": "A"
+      "grade": "A-",
+      "marks": 12,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-16T11:55:02.047Z",
+      "id": 1
     }
   ]
 }

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Container, Grid, Typography } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ActionType } from 'typesafe-actions';
 
 import { Button, InputSelect, InputText } from '../common';
 import { containerStyles, titleStyles } from './styles';
@@ -12,21 +13,41 @@ import {
   subjectOptions,
 } from '../../state/utils/data';
 import { FORM_KEYS, FORM_TYPE } from '../../state/utils/enums';
-import { IStudentForm } from '../../state/ducks/student/types';
+import {
+  IEditData,
+  IStudentForm,
+  IStudentState,
+} from '../../state/ducks/student/types';
+import { addStudent, editStudent } from '../../state/ducks/student/actions';
 
-const StudentForm = () => {
+interface IProps extends IStudentState {
+  addStudent: (data: IStudentForm) => ActionType<typeof addStudent>;
+  editStudent: (data: IEditData) => ActionType<typeof editStudent>;
+}
+
+const StudentForm = ({ students, addStudent, editStudent }: IProps) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
   const formType = id ? FORM_TYPE.EDIT : FORM_TYPE.ADD;
 
+  const student = students.find(student => student.id === parseInt(id || '0'));
+
   const { handleSubmit, control } = useForm<IStudentForm>({
     resolver: yupResolver(studentSchema),
     mode: 'onChange',
+    defaultValues: student,
   });
 
   const onSubmit = (data: IStudentForm) => {
-    console.log(data);
+    if (formType === FORM_TYPE.ADD) addStudent(data);
+    else
+      editStudent({
+        id: parseInt(id || '0'),
+        data,
+      });
+
+    navigate('/');
   };
 
   return (

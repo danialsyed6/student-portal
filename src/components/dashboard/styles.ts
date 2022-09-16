@@ -31,3 +31,10 @@ export const gradesStyle = {
   alignItems: 'center',
   justifyContent: 'space-between',
 };
+
+export const noStudentsStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  m: 5,
+};
+export const noStudentsTextStyle = { fontSize: '20px' };

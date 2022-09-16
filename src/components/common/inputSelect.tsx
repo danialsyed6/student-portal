@@ -42,7 +42,7 @@ const InputSelect = ({ name, label, options, control }: IProps) => {
         }}
       >
         {options.map((option, i) => (
-          <MenuItem value={option.name} sx={menuItemStyles} key={i}>
+          <MenuItem value={option.label} sx={menuItemStyles} key={i}>
             {option.label}
           </MenuItem>
         ))}

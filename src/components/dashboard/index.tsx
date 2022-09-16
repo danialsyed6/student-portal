@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ActionType } from 'typesafe-actions';
 
@@ -12,6 +12,8 @@ import {
   gradesStyle,
   headerStyle,
   headerTextStyle,
+  noStudentsStyle,
+  noStudentsTextStyle,
 } from './styles';
 import { IStudentState } from '../../state/ducks/student/types';
 import { getStudents } from '../../state/ducks/student/actions';
@@ -49,7 +51,17 @@ const Dashboard = ({ getStudents, students, loading, error }: IProps) => {
           <GradeFlag title="Top Grade" grade="A+" danger />
           <GradeFlag title="Top Grade" grade="A+" danger />
         </Grid>
-        {loading ? <Loader /> : <Table students={students} />}
+        {loading ? (
+          <Loader />
+        ) : students.length > 0 ? (
+          <Table students={students} />
+        ) : (
+          <Box sx={noStudentsStyle}>
+            <Typography component="h2" sx={noStudentsTextStyle}>
+              There are no students in the database.
+            </Typography>
+          </Box>
+        )}
       </Grid>
     </Container>
   );
