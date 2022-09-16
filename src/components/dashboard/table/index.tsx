@@ -12,10 +12,11 @@ import {
 } from '@mui/material';
 import moment from 'moment';
 
-import { dateStyle, timeStyle } from './styles';
 import TableGradeFlag from '../tableGradeFlag';
 import OptionsMenu from '../optionsMenu';
+import { dateStyle, timeStyle } from './styles';
 import { IStudent } from '../../../state/ducks/student/types';
+import { studentTableKeys } from '../../../state/utils/data';
 
 interface IProps {
   students: IStudent[] | [];
@@ -27,24 +28,15 @@ export default function BasicTable({ students }: IProps) {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="left" sx={{ fontWeight: 'bold' }}>
-              Name
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Marks
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Subject
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Grades
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Date
-            </TableCell>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
-              Action
-            </TableCell>
+            {studentTableKeys.map((key, i) => (
+              <TableCell
+                align={i === 0 ? 'left' : 'center'}
+                sx={{ fontWeight: 'bold' }}
+                key={i}
+              >
+                {key}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -67,7 +59,7 @@ export default function BasicTable({ students }: IProps) {
                 </Box>
               </TableCell>
               <TableCell align="center">
-                <OptionsMenu />
+                <OptionsMenu id={student._id} />
               </TableCell>
             </TableRow>
           ))}

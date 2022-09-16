@@ -1,9 +1,12 @@
-export interface IStudent {
-  _id: string;
+export interface IStudentForm {
   name: string;
   subject: string;
   grade: string;
   marks: number;
+}
+
+export interface IStudent extends IStudentForm {
+  _id: string;
   createdAt: string;
 }
 

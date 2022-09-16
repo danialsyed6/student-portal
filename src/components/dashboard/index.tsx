@@ -1,19 +1,22 @@
 import React from 'react';
 import { Container, Grid, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
+import GradeFlag from './gradeFlag';
+import Table from './table';
+import Button from '../common/button';
 import {
-  ctaStyle,
-  ctaTextStyle,
+  studentSummaryStyle,
+  studentSummaryTextStyle,
   gradesStyle,
   headerStyle,
   headerTextStyle,
 } from './styles';
-import GradeFlag from './gradeFlag';
-import Table from './table';
-import Button from './button';
 import { students } from '../../state/utils/data';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Grid container direction="column" rowGap={3}>
@@ -22,9 +25,13 @@ const Dashboard = () => {
             Student Portal
           </Typography>
         </Grid>
-        <Grid item sx={ctaStyle}>
-          <Typography sx={ctaTextStyle}>Students Sammary</Typography>
-          <Button text="+ Add Data" onClick={() => {}} secondary />
+        <Grid item sx={studentSummaryStyle}>
+          <Typography sx={studentSummaryTextStyle}>Students Sammary</Typography>
+          <Button
+            text="+ Add Data"
+            onClick={() => navigate('/student')}
+            secondary
+          />
         </Grid>
         <Grid item sx={gradesStyle}>
           <GradeFlag title="Top Grade" grade="A+" />

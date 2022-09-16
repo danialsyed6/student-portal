@@ -12,14 +12,14 @@ export const headerTextStyle = {
   letterSpacing: '0em',
 };
 
-export const ctaStyle = {
+export const studentSummaryStyle = {
   height: '3em',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
 };
 
-export const ctaTextStyle = {
+export const studentSummaryTextStyle = {
   fontSize: '18px',
   fontWeight: '500',
   lineHeight: '27px',
