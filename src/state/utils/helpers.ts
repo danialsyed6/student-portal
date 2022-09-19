@@ -1,55 +1,24 @@
+import lodash from 'lodash';
+
 import { IStudent } from '../ducks/student/types';
 
-export const getTopAndLowestGrade = (
-  students: IStudent[]
-): { topGrade: string; lowestGrade: string } => {
-  const grades: any = {
-    'A+': 5,
-    'A-': 4,
-    'B+': 3,
-    'B-': 2,
-    F: 1,
-  };
+export const getFirstGrade = (students: IStudent[], grades: string[]) => {
+  for (let i = 0; i < grades.length; i++) {
+    const grade = grades[i];
 
-  let topGradeIndex = 0;
-  let lowestGradeIndex = Object.keys(grades).length;
-  let topGrade = '';
-  let lowestGrade = '';
+    if (students.some(student => student.grade === grade)) return grade;
+  }
 
-  students.forEach(student => {
-    const gradeVal: number = grades[student.grade];
-
-    if (gradeVal > topGradeIndex) {
-      topGradeIndex = gradeVal;
-      topGrade = student.grade;
-    }
-    if (gradeVal < lowestGradeIndex) {
-      lowestGradeIndex = gradeVal;
-      lowestGrade = student.grade;
-    }
-  });
-
-  return {
-    topGrade,
-    lowestGrade,
-  };
+  return 'N/A';
 };
+
 export const getMostOccurences = (students: IStudent[]): string => {
   if (students.length === 0) return 'N/A';
   const subjects = students.map(student => student.subject);
 
-  var modeMap: any = {};
-  var maxEl = subjects[0],
-    maxCount = 1;
-  for (let i = 0; i < subjects.length; i++) {
-    let el = subjects[i];
-    if (modeMap[el] == null) modeMap[el] = 1;
-    else modeMap[el]++;
-    if (modeMap[el] > maxCount) {
-      maxEl = el;
-      maxCount = modeMap[el];
-    }
-  }
+  const mostOccuringSubject: string = lodash.head(
+    lodash(subjects).countBy().entries().maxBy(lodash.last)
+  ) as string;
 
-  return maxEl;
+  return mostOccuringSubject;
 };
