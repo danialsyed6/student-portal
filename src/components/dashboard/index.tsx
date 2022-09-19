@@ -1,21 +1,51 @@
-import React from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { ActionType } from 'typesafe-actions';
 
 import GradeFlag from './gradeFlag';
 import Table from './table';
-import Button from '../common/button';
+import { Loader, Button } from '../common';
 import {
   studentSummaryStyle,
   studentSummaryTextStyle,
   gradesStyle,
   headerStyle,
   headerTextStyle,
+  noStudentsStyle,
+  noStudentsTextStyle,
 } from './styles';
-import { students } from '../../state/utils/data';
+import { alert } from '../../state/utils';
+import { clearError } from '../../state/ducks/student/reducer';
+import { getStudents } from '../../state/ducks/student/actions';
+import { IDashboard, IStudentState } from '../../state/ducks/student/types';
 
-const Dashboard = () => {
+interface IProps extends IStudentState {
+  getStudents: () => ActionType<typeof getStudents>;
+  clearError: () => ActionType<typeof clearError>;
+  dashboard: IDashboard;
+}
+
+const Dashboard = ({
+  getStudents,
+  dashboard,
+  clearError,
+  students,
+  loading,
+  error,
+}: IProps) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getStudents();
+  }, [getStudents]);
+
+  useEffect(() => {
+    if (!error) return;
+
+    alert(error);
+    clearError();
+  }, [error, clearError]);
 
   return (
     <Container>
@@ -34,12 +64,26 @@ const Dashboard = () => {
           />
         </Grid>
         <Grid item sx={gradesStyle}>
-          <GradeFlag title="Top Grade" grade="A+" />
-          <GradeFlag title="Top Grade" grade="A+" />
-          <GradeFlag title="Top Grade" grade="A+" danger />
-          <GradeFlag title="Top Grade" grade="A+" danger />
+          <GradeFlag title="Top Grade" grade={dashboard.topGrade} />
+          <GradeFlag title="Most Passed" grade={dashboard.mostPassed} />
+          <GradeFlag
+            title="Lowest Grade"
+            grade={dashboard.lowestGrade}
+            danger
+          />
+          <GradeFlag title="Most Failed" grade={dashboard.mostFailed} danger />
         </Grid>
-        <Table students={students} />
+        {loading ? (
+          <Loader />
+        ) : students.length > 0 ? (
+          <Table students={students} />
+        ) : (
+          <Box sx={noStudentsStyle}>
+            <Typography component="h2" sx={noStudentsTextStyle}>
+              There are no students in the database.
+            </Typography>
+          </Box>
+        )}
       </Grid>
     </Container>
   );

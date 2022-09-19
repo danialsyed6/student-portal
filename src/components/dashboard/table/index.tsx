@@ -13,8 +13,8 @@ import {
 import moment from 'moment';
 
 import TableGradeFlag from '../tableGradeFlag';
-import OptionsMenu from '../optionsMenu';
 import { dateStyle, timeStyle } from './styles';
+import { OptionsMenuContainer } from '../../../containers';
 import { IStudent } from '../../../state/ducks/student/types';
 import { studentTableKeys } from '../../../state/utils/data';
 
@@ -41,7 +41,7 @@ export default function BasicTable({ students }: IProps) {
         </TableHead>
         <TableBody>
           {students.map(student => (
-            <TableRow key={student._id}>
+            <TableRow key={student.id}>
               <TableCell align="left">{student.name}</TableCell>
               <TableCell align="center">{student.marks}</TableCell>
               <TableCell align="center">{student.subject}</TableCell>
@@ -59,7 +59,7 @@ export default function BasicTable({ students }: IProps) {
                 </Box>
               </TableCell>
               <TableCell align="center">
-                <OptionsMenu id={student._id} />
+                <OptionsMenuContainer id={student.id} />
               </TableCell>
             </TableRow>
           ))}

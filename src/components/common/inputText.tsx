@@ -29,7 +29,12 @@ const InputText = ({ name, label, control, type = 'text' }: IProps) => {
   const isError = !!errorObj;
 
   return (
-    <FormControl variant="outlined" sx={formControlStyles} error={isError}>
+    <FormControl
+      className="text"
+      variant="outlined"
+      sx={formControlStyles}
+      error={isError}
+    >
       <InputLabel htmlFor={name}>{label}</InputLabel>
       <OutlinedInput
         id={name}

@@ -1,18 +1,44 @@
 {
   "students": [
     {
-      "id": 1,
-      "name": "Ali Raza",
-      "subject": "Maths",
-      "marks": 20,
-      "grade": "F"
+      "subject": "English",
+      "grade": "A-",
+      "marks": 12,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-16T11:55:02.047Z",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Ali Raza",
-      "subject": "English",
-      "marks": 80,
-      "grade": "A"
+      "subject": "Maths",
+      "grade": "F",
+      "marks": 12,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-16T13:19:48.181Z",
+      "id": 2
+    },
+    {
+      "subject": "Maths",
+      "grade": "F",
+      "marks": 13,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-19T06:29:02.074Z",
+      "id": 3
+    },
+    {
+      "subject": "Maths",
+      "grade": "A+",
+      "marks": 90,
+      "name": "Syed M Danial Raza Naqvi",
+      "createdAt": "2022-09-19T06:30:34.367Z",
+      "id": 4
+    },
+    {
+      "subject": "Maths",
+      "grade": "A+",
+      "marks": 82,
+      "name": "Ahmad Naqvi",
+      "createdAt": "2022-09-19T06:38:17.740Z",
+      "id": 5
     }
   ]
 }
