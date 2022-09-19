@@ -18,7 +18,7 @@ const StudentSlice = createSlice({
     },
     getStudentsSuccess: (state, { payload }: PayloadAction<IStudent[]>) => {
       state.loading = false;
-      state.students = payload;
+      state.students = payload.reverse();
     },
     getStudentsFail: (state, { payload }: PayloadAction<string>) => {
       state.loading = false;

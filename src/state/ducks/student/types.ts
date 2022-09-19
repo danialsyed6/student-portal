@@ -21,6 +21,12 @@ export interface IEditData {
   data: IStudentForm;
 }
 
+export interface IDashboard {
+  topGrade: string;
+  mostPassed: string;
+  lowestGrade: string;
+  mostFailed: string;
+}
 export const StudentActionTypes = {
   GET_STUDENTS: '@student/getStudentsRequest',
   ADD_STUDENT: '@student/addStudentRequest',

@@ -15,23 +15,19 @@ import {
   noStudentsStyle,
   noStudentsTextStyle,
 } from './styles';
-import { IStudent, IStudentState } from '../../state/ducks/student/types';
-import { getStudents } from '../../state/ducks/student/actions';
 import { alert } from '../../state/utils';
 import { clearError } from '../../state/ducks/student/reducer';
-import { getDashboard } from '../../state/ducks/dashboard/actions';
-import { IDashboard } from '../../state/ducks/dashboard/types';
+import { getStudents } from '../../state/ducks/student/actions';
+import { IDashboard, IStudentState } from '../../state/ducks/student/types';
 
 interface IProps extends IStudentState {
   getStudents: () => ActionType<typeof getStudents>;
-  getDashboard: (data: IStudent[]) => ActionType<typeof getDashboard>;
   clearError: () => ActionType<typeof clearError>;
   dashboard: IDashboard;
 }
 
 const Dashboard = ({
   getStudents,
-  getDashboard,
   dashboard,
   clearError,
   students,
@@ -43,10 +39,6 @@ const Dashboard = ({
   useEffect(() => {
     getStudents();
   }, [getStudents]);
-
-  useEffect(() => {
-    getDashboard(students);
-  }, [students, getDashboard]);
 
   useEffect(() => {
     if (!error) return;
