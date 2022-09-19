@@ -1,8 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 import { IDashboard, IStudentState } from './types';
-import { gradeOptions } from '../../utils/data';
-import { getFirstGrade, getMostOccurences } from '../../utils/helpers';
+import { getMostOccurences, getTopAndLowestGrade } from '../../utils/helpers';
 
 const selectStudents = (state: IStudentState) => state.students;
 
@@ -15,14 +14,7 @@ export const selectDashboard = createSelector(
     const mostFailed = getMostOccurences(failed);
     const mostPassed = getMostOccurences(passed);
 
-    const topGrade = getFirstGrade(
-      students,
-      gradeOptions.map(grade => grade.label)
-    );
-    const lowestGrade = getFirstGrade(
-      students,
-      gradeOptions.map(grade => grade.label).reverse()
-    );
+    const { topGrade, lowestGrade } = getTopAndLowestGrade(students);
 
     return {
       mostFailed,

@@ -1,15 +1,29 @@
 import lodash from 'lodash';
 
 import { IStudent } from '../ducks/student/types';
+import { gradeOptions } from './data';
 
-export const getFirstGrade = (students: IStudent[], grades: string[]) => {
-  for (let i = 0; i < grades.length; i++) {
-    const grade = grades[i];
+export const getTopAndLowestGrade = (
+  students: IStudent[]
+): { topGrade: string; lowestGrade: string } => {
+  const grades = gradeOptions.map(grade => grade.label);
 
-    if (students.some(student => student.grade === grade)) return grade;
-  }
+  let topGrade = 'N/A';
+  let lowestGrade = 'N/A';
 
-  return 'N/A';
+  grades.forEach(grade => {
+    const exists = students.some(student => student.grade === grade);
+
+    if (!exists) return;
+
+    if (topGrade === 'N/A') topGrade = grade;
+    lowestGrade = grade;
+  });
+
+  return {
+    topGrade,
+    lowestGrade,
+  };
 };
 
 export const getMostOccurences = (students: IStudent[]): string => {
